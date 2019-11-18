@@ -1,6 +1,12 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: white;
+  background: transparent;
+  position: sticky;
+  h3 {
+    font-family: 'Pacifico', cursive;
+    color: #F4F4F4;
+    opacity: 0.8;
+  }
 }
 
 .navbar-lewagon .navbar-collapse {
