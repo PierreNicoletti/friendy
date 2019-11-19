@@ -1,2 +1,44 @@
-<h1>Friends#show</h1>
+<div class="container mt-3 ml-3">
+  <h1>Meet <%=@friend.name %></h1>
+</div>
 
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="container mt-3">
+        <% if @friend.photo.attached?%>
+           <%= cl_image_tag @cocktail.photo.key, width: 400, height: 300, crop: :fill %>
+        <% else %>
+          <%= cl_image_tag "", width: 400, height: 300, crop: :fill %>
+        <%end%>
+      </div>
+    </div>
+    <div class="col">
+      <div class="container mt-3">
+        <p>
+          <%=@friend.name%> lives in <%=@friend.city%> and was on on <%=@friend.birth_date%>
+        </p>
+        <h4>
+          Price per day: € <%=@friend.price%>
+        </h4>
+      </div>
+    </div>
+    <div class="col">
+      <div class="container button-container">
+        <div class="btn btn-success">
+        <%= link_to "Book #{@friend.name}", friend_path(@friend)%>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-8">
+      <div class="container mt-3">
+      description
+      </div>
+    </div>
+    <div class="col-4">
+     nothing
+    </div>
+  </div>
+</div>
