@@ -1,4 +1,5 @@
 class FriendsController < ApplicationController
+  skip_before_action :authenticate_user!
   before_action :set_friend, only: [:show, :edit, :update, :destroy]
   def new
     @friend = Friend.new
