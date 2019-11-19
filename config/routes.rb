@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-  get 'users/show'
-  get 'users/index'
-  resources :friends, except: [:show] do
+  resources :friends do
     resources :bookings, only: [:new, :create]
   end
   devise_for :users
