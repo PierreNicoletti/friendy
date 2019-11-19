@@ -1,12 +1,13 @@
 class FriendsController < ApplicationController
-  skip_before_action :authenticate_user!
   before_action :set_friend, only: [:show, :edit, :update, :destroy]
   def new
-    @friend = Friend.new
+    @friend = current_user.friends.new
+    authorize @friend
   end
 
   def create
-    @friend = Friend.new(friend_params)
+    @friend = current_user.friends.new(friend_params)
+    authorize @friend
     if @friend.save
       redirect_to friends_path(@friend)
     else
@@ -15,7 +16,7 @@ class FriendsController < ApplicationController
   end
 
   def index
-    @friends = Friend.all
+    @friends = policy_scope(Friend).order(created_at: :desc)
   end
 
   def show
@@ -37,10 +38,11 @@ class FriendsController < ApplicationController
   private
 
   def friend_params
-    params.require(:friend).permit(:name, :birth_date, :gender, :city, :description, :price)
+    params.require(:friend).permit(:name, :birth_date, :gender, :city, :description, :price, :photo)
   end
 
   def set_friend
     @friend = Friend.find(params[:id])
+    authorize @friend
   end
 end
