@@ -1,7 +1,9 @@
-.navbar-lewagon {
+.navbar-friendy {
   justify-content: space-between;
-  background: transparent;
-  position: sticky;
+  background: white;
+  transition: 0.5s background-color ease;
+  position: fixed;
+  width: 100%;
   h3 {
     font-family: 'Pacifico', cursive;
     color: #F4F4F4;
@@ -9,10 +11,25 @@
   }
 }
 
-.navbar-lewagon .navbar-collapse {
+.navbar-friendy-transparent {
+  background-color: transparent;
+}
+
+.navbar-friendy .navbar-collapse {
   flex-grow: 0;
 }
 
-.navbar-lewagon .navbar-brand img {
+.navbar-friendy .navbar-brand img {
   width: 40px;
+}
+
+.navbar-friendy h3 {
+  font-family: 'Pacifico', cursive;
+  color: black;
+  opacity: 0.8;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: black;
+  opacity: 0.8;
 }
