@@ -9,7 +9,7 @@ class FriendsController < ApplicationController
     @friend = current_user.friends.new(friend_params)
     authorize @friend
     if @friend.save
-      redirect_to friends_path(@friend)
+      redirect_to friend_path(@friend)
     else
       render :new
     end
@@ -20,6 +20,7 @@ class FriendsController < ApplicationController
   end
 
   def show
+    @age = age(@friend)
   end
 
   def edit
@@ -33,6 +34,12 @@ class FriendsController < ApplicationController
   def destroy
     @friend.destroy
     redirect_to friends_path
+  end
+
+  def age(friend)
+    auj = Date.today
+    duration = (auj - friend.birth_date) / 365
+    return duration.round
   end
 
   private

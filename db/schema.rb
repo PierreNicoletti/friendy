@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_19_135614) do
+ActiveRecord::Schema.define(version: 2019_11_19_160326) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,7 +49,6 @@ ActiveRecord::Schema.define(version: 2019_11_19_135614) do
 
   create_table "friends", force: :cascade do |t|
     t.string "name"
-    t.datetime "birth_date"
     t.string "gender"
     t.string "city"
     t.text "description"
@@ -57,6 +56,7 @@ ActiveRecord::Schema.define(version: 2019_11_19_135614) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
+    t.date "birth_date"
     t.index ["user_id"], name: "index_friends_on_user_id"
   end
 
