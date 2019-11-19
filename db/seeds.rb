@@ -20,7 +20,7 @@ puts 'Initializing friends...'
 july = Friend.new(name: "July", birth_date: "01/05/1999", gender: "F", city: "Paris", description: "Very friendly person hanger to meet new people", price: 320)
 david= Friend.new(name: "David", birth_date: "01/02/1987", gender: "M", city: "Los Angeles", description: "Ready to rock your world", price: 220)
 tina = Friend.new(name: "Tina", birth_date: "01/05/1989", gender: "F", city: "London", description: "Very smily person indeed", price: 290)
-bob = Friend.new(name: "July", birth_date: "01/05/1962", gender: "M", city: "Phoenix (AZ)", description: "I might look scary but I'm very nice, trust me", price: 80)
+bob = Friend.new(name: "Bobo", birth_date: "01/05/1962", gender: "M", city: "Phoenix (AZ)", description: "I might look scary but I'm very nice, trust me", price: 80)
 
 puts 'Linking friends to users...'
 july.user = pierre
