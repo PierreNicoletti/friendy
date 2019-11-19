@@ -7,38 +7,42 @@
     <div class="col">
       <div class="container mt-3">
         <% if @friend.photo.attached?%>
-           <%= cl_image_tag @cocktail.photo.key, width: 400, height: 300, crop: :fill %>
+           <%= cl_image_tag @friend.photo.key, width: 400, height: 300, crop: :fill, gravity: :face %>
         <% else %>
-          <%= cl_image_tag "", width: 400, height: 300, crop: :fill %>
+          <%= cl_image_tag "", width: 400, height: 300, crop: :fill, gravity: :face %>
         <%end%>
       </div>
     </div>
     <div class="col">
       <div class="container mt-3">
         <p>
-          <%=@friend.name%> lives in <%=@friend.city%> and was on on <%=@friend.birth_date%>
+          <%=@friend.name%> is <%=@age%> and lives in <%=@friend.city%>.
         </p>
-        <h4>
+        <h4 text-center>
           Price per day: € <%=@friend.price%>
         </h4>
       </div>
     </div>
     <div class="col">
-      <div class="container button-container">
-        <div class="btn btn-success">
-        <%= link_to "Book #{@friend.name}", friend_path(@friend)%>
-        </div>
+      <div class="container button-container mt-3 text-center">
+        <h3>
+          <div class="container">
+            <%= link_to "Book #{@friend.name}", friend_path(@friend), class: "btn btn-primary btn-lg text-white"%>
+          </div>
+          <div class="container mt-5">
+            <%= link_to "Back to list", friends_path, class: "btn btn-secondary text-white"%>
+          </div>
+        </h3>
       </div>
     </div>
   </div>
   <div class="row">
     <div class="col-8">
-      <div class="container mt-3">
-      description
+      <div class="container mt-3 mb-3">
+        <%=@friend.description%>
       </div>
     </div>
     <div class="col-4">
-     nothing
     </div>
   </div>
 </div>
