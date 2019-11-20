@@ -20,7 +20,7 @@ puts 'Creating friends...'
 july = Friend.create!(user: pierre, name: "July", birth_date: "01/05/1999", gender: "F", city: "Paris", description: "Very friendly person hanger to meet new people", price: 320)
 david= Friend.create!(user: laura, name: "David", birth_date: "01/02/1987", gender: "M", city: "Los Angeles", description: "Ready to rock your world", price: 220)
 tina = Friend.create!(user: pierre, name: "Tina", birth_date: "01/05/1989", gender: "F", city: "London", description: "Very smily person indeed", price: 290)
-bob = Friend.create!(user: laetitia, name: "Bobo", birth_date: "01/05/1962", gender: "M", city: "Phoenix (AZ)", description: "I might look scary but I'm very nice, trust me", price: 80)
+bob = Friend.create!(user: laetitia, name: "Bob", birth_date: "01/05/1962", gender: "M", city: "Phoenix (AZ)", description: "I might look scary but I'm very nice, trust me", price: 80)
 
 puts 'Linking with photos...'
 july_pic = URI.open("https://images.unsplash.com/photo-1485218173291-62104d18e1c1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80")
