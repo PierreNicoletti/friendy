@@ -12,7 +12,7 @@ class BookingsController < ApplicationController
     @booking.friend = @friend
     authorize @booking
     if @booking.save
-      redirect_to friend_path(@booking.friend) #define path
+      redirect_to dashboard_path #define path
     else
       render :new
     end

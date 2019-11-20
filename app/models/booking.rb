@@ -2,12 +2,12 @@ class Booking < ApplicationRecord
   belongs_to :friend
   belongs_to :user
 
-  def display_date(date)
-    month = date.month
-    day = date.day
-    w_day = date.wday
-    year = date.year
-    return "#{explicit_day(w_day)} #{day} #{explicit_month(month)} #{year}"
+  def display_start_date
+    display_date(start_date)
+  end
+
+  def display_end_date
+    display_date(end_date)
   end
 
   private
@@ -20,5 +20,12 @@ class Booking < ApplicationRecord
   def explicit_day(day)
     days = %w[Sunday Monday Tuesday Wednesday Thursday Friday Saturday]
     return days[day]
+  end
+
+  def display_date(date)
+    month = date.month
+    day = date.day
+    w_day = date.wday
+    return "#{explicit_day(w_day)} #{day} #{explicit_month(month)}"
   end
 end
