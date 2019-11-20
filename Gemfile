@@ -10,7 +10,7 @@ gem 'redis'
 gem 'devise'
 
 gem 'cloudinary', '~> 1.12.0'
-
+gem 'geocoder'
 gem 'pundit'
 
 gem 'autoprefixer-rails'
