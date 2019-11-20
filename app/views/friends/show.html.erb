@@ -1,58 +1,55 @@
 <div class="container m-3">
   <h1>Meet <%=@friend.name %></h1>
+    <p>
+      <%= @friend.name %> is <%= @friend.age %> and lives in <%= @friend.city%>.
+    </p>
 </div>
 
 <div class="container">
   <div class="row">
-    <div class="col">
-      <div class="container mt-3">
+    <div class="col-4">
+      <div class="container">
         <% if @friend.photo.attached?%>
-           <%= cl_image_tag @friend.photo.key, width: 400, height: 300, crop: :fill, gravity: :face %>
+           <%= cl_image_tag @friend.photo.key, width: 300, height: 300, crop: :fill, gravity: :face %>
         <% else %>
-          <%= cl_image_tag "", width: 400, height: 300, crop: :fill, gravity: :face %>
+          <%= cl_image_tag "", width: 300, height: 300, crop: :fill, gravity: :face %>
         <%end%>
       </div>
     </div>
-    <div class="col">
-      <div class="container mt-3">
-        <p>
-          <%= @friend.name %> is <%= @friend.age %> and lives in <%= @friend.city%>.
-        </p>
-        <h4 text-center>
-          Price per day: € <%=@friend.price%>
-        </h4>
-      </div>
+    <div class="col-4">
+      <div class="container">
+        <%= @friend.description %>
     </div>
-    <div class="col">
-      <div class="container button-container mt-3 text-center">
-        <h3>
-          <div class="container">
+  </div>
+  <div class="col-4">
+    <h4 text-center>
+       <p class="font-weight-normal text-center">
+        Price per day: <%=@friend.price%> €
+      </p>
+    </h4>
+    <div class="container button-container mt-3 text-center">
+      <h3>
+         <div class="container mt-3 ">
             <%= link_to "Book #{@friend.name}", new_friend_booking_path(@friend), class: "btn btn-primary btn-lg text-white"%>
           </div>
-          <div class="container mt-5">
+          <div class="container mt-3 ">
             <%= link_to "Back to list", friends_path, class: "btn btn-secondary text-white"%>
           </div>
         </h3>
       </div>
     </div>
   </div>
+      
   <div class="row">
-    <div class="col-8">
-      <div class="container mt-3 mb-3">
-        <%= @friend.description %>
-      </div>
-    </div>
-    <div class="col-4">
-    </div>
-  </div>
-
-  <div
+  <div class="col-6"> 
+    <div 
     class="my-5"
     id="map"
     style="width: 100%;
     height: 400px;"
     data-markers="<%= @markers.to_json %>"
-    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-  ></div>
-
-</div>
+    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
+  </div>
+  </div>
+  
