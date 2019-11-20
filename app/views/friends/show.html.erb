@@ -16,7 +16,7 @@
     <div class="col">
       <div class="container mt-3">
         <p>
-          <%=@friend.name%> is <%=@age%> and lives in <%=@friend.city%>.
+          <%= @friend.name %> is <%= @friend.age %> and lives in <%= @friend.city%>.
         </p>
         <h4 text-center>
           Price per day: € <%=@friend.price%>
@@ -39,7 +39,7 @@
   <div class="row">
     <div class="col-8">
       <div class="container mt-3 mb-3">
-        <%=@friend.description%>
+        <%= @friend.description %>
       </div>
     </div>
     <div class="col-4">
