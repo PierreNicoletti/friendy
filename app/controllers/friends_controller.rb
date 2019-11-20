@@ -29,7 +29,7 @@ class FriendsController < ApplicationController
   end
 
   def show
-    @age = age(@friend)
+    # @age = age(@friend)
     # @geo = @friend.geocoded
     @markers = [{
       lat: @friend.latitude,
@@ -50,16 +50,10 @@ class FriendsController < ApplicationController
     redirect_to friends_path
   end
 
-  def age(friend)
-    auj = Date.today
-    duration = (auj - friend.birth_date) / 365
-    return duration.round
-  end
-
   private
 
   def friend_params
-    params.require(:friend).permit(:name, :birth_date, :gender, :city, :description, :price, :photo)
+    params.require(:friend).permit(:name, :birthday, :gender, :city, :description, :price, :photo)
   end
 
   def set_friend

@@ -1,52 +1,19 @@
+
 <div class="cards">
+  <% @friends.each do |friend| %>
+  <%= link_to friend_path(friend) do %>
   <div class="card-trip">
-    <img src="https://images.unsplash.com/photo-1485218173291-62104d18e1c1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80" />
+    <%= cl_image_tag friend.photo.key %>
     <div class="card-trip-infos">
       <div>
-        <h2>July</h2>
-        <p>20, Paris</p>
+        <h2><%= friend.name %></h2>
+        <p>xx years old, <%= friend.city %></p>
       </div>
-      <h2 class="card-trip-pricing">320 €</h2>
+      <h2<%= friend.price %>/h2>
     </div>
   </div>
-
-  <div class="card-trip">
-    <img src="https://images.unsplash.com/photo-1474293507615-951863a0f942?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" />
-    <div class="card-trip-infos">
-      <div>
-        <h2>David</h2>
-        <p>32, Los Angeles</p>
-      </div>
-      <h2 class="card-trip-pricing">220 €</h2>
-    </div>
-  </div>
-
-  <div class="card-trip">
-    <img src="https://images.unsplash.com/photo-1499651681375-8afc5a4db253?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=687&q=80" />
-    <div class="card-trip-infos">
-      <div>
-        <h2>Tina</h2>
-        <p>30, London</p>
-      </div>
-      <h2 class="card-trip-pricing">290 €</h2>
-    </div>
-  </div>
-
-  <div class="card-trip">
-    <img src="https://images.unsplash.com/photo-1461938337379-4b537cd2db74?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=701&q=80" />
-    <div class="card-trip-infos">
-      <div>
-        <h2>Bob</h2>
-        <p>57, Phoenix (AZ)</p>
-      </div>
-      <h2 class="card-trip-pricing">80 €</h2>
-    </div>
-  </div>
-
-<%= link_to @friends.first.name, friend_path(@friends.first)%>
-<%= link_to "New friend", new_friend_path%>
-
-
+  <% end %>
+  <% end %>
 </div>
 
 <div

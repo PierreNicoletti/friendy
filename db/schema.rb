@@ -37,12 +37,12 @@ ActiveRecord::Schema.define(version: 2019_11_20_102420) do
   end
 
   create_table "bookings", force: :cascade do |t|
-    t.datetime "start_date"
-    t.datetime "end_date"
     t.bigint "friend_id"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "start_date"
+    t.date "end_date"
     t.index ["friend_id"], name: "index_bookings_on_friend_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end

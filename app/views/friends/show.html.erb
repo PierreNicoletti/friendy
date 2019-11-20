@@ -16,7 +16,7 @@
     <div class="col">
       <div class="container mt-3">
         <p>
-          <%=@friend.name%> is <%=@age%> and lives in <%=@friend.city%>.
+          <%= @friend.name %> is <%= @friend.age %> and lives in <%= @friend.city%>.
         </p>
         <h4 text-center>
           Price per day: € <%=@friend.price%>
@@ -27,7 +27,7 @@
       <div class="container button-container mt-3 text-center">
         <h3>
           <div class="container">
-            <%= link_to "Book #{@friend.name}", friend_path(@friend), class: "btn btn-primary btn-lg text-white"%>
+            <%= link_to "Book #{@friend.name}", new_friend_booking_path(@friend), class: "btn btn-primary btn-lg text-white"%>
           </div>
           <div class="container mt-5">
             <%= link_to "Back to list", friends_path, class: "btn btn-secondary text-white"%>
@@ -39,7 +39,7 @@
   <div class="row">
     <div class="col-8">
       <div class="container mt-3 mb-3">
-        <%=@friend.description%>
+        <%= @friend.description %>
       </div>
     </div>
     <div class="col-4">
