@@ -18,7 +18,6 @@ class FriendsController < ApplicationController
 
   def index
     @friends = policy_scope(Friend).order(created_at: :desc)
-    @ages = @friends.map { |friend| age(friend) }
   end
 
   def show
