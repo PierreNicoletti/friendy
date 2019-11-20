@@ -24,6 +24,6 @@ class FriendPolicy < ApplicationPolicy
   private
 
   def user_is_authorized?
-    record.user == user || user.admin
+    record.user == user # || user.admin
   end
 end
