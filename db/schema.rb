@@ -57,6 +57,8 @@ ActiveRecord::Schema.define(version: 2019_11_20_104120) do
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.date "birth_date"
+    t.float "latitude"
+    t.float "longitude"
     t.index ["user_id"], name: "index_friends_on_user_id"
   end
 
