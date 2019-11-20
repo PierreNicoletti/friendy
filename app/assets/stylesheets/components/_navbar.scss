@@ -2,12 +2,8 @@
   justify-content: space-between;
   transition: 0.5s background-color ease;
   position: fixed;
+  z-index: 5;
   width: 100%;
-  h3 {
-    font-family: 'Pacifico', cursive;
-    color: #F4F4F4;
-    opacity: 0.8;
-  }
   a {
     text-decoration: none;
   }
@@ -29,7 +25,7 @@
   width: 40px;
 }
 
-.navbar-friendy h3 {
+.navbar-friendy h2 {
   font-family: 'Pacifico', cursive;
   color: black;
   opacity: 0.8;
