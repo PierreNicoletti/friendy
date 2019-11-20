@@ -18,10 +18,23 @@ class FriendsController < ApplicationController
 
   def index
     @friends = policy_scope(Friend).order(created_at: :desc)
+    @geos = Friend.geocoded #returns friends with coordinates
+
+    @markers = @geos.map do |flat|
+      {
+        lat: flat.latitude,
+        lng: flat.longitude
+      }
+    end
   end
 
   def show
     @age = age(@friend)
+    # @geo = @friend.geocoded
+    @markers = [{
+      lat: @friend.latitude,
+      lng: @friend.longitude
+    }]
   end
 
   def edit
