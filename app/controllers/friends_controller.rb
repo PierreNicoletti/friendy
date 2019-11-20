@@ -20,10 +20,11 @@ class FriendsController < ApplicationController
     @friends = policy_scope(Friend).order(created_at: :desc)
     @geos = Friend.geocoded #returns friends with coordinates
 
-    @markers = @geos.map do |flat|
+    @markers = @geos.map do |friend|
       {
-        lat: flat.latitude,
-        lng: flat.longitude
+        lat: friend.latitude,
+        lng: friend.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { friend: friend })
       }
     end
   end
