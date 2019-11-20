@@ -1,0 +1,57 @@
+<%# current_user = User.find_by(email: "pierre@friendy.com") %>
+
+<h1>Hello <%= current_user.email %></h1>
+
+<% unless current_user.bookings.empty? %>
+  <h2>Your Bookings</h2>
+
+  <div class="cards">
+    <% current_user.bookings.each do |booking|%>
+      <div class="card-trip">
+        <img src="https://images.unsplash.com/photo-1485218173291-62104d18e1c1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80" />
+        <div class="card-trip-infos">
+          <div>
+            <p><%= booking.friend.name %></p>
+            <p><%= booking.start_date %> - <%= booking.end_date %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+<% end %>
+
+<%# unless current_user.friends.empty? %>
+  <h2>Your Portfolio</h2>
+  <div class="cards mb-5">
+    <% current_user.friends.each do |friend|%>
+
+      <div class="card-trip">
+        <img src="https://images.unsplash.com/photo-1485218173291-62104d18e1c1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80" />
+        <div class="card-trip-infos">
+          <div>
+            <h2><%= friend.name %></h2>
+            <div>
+              <% if policy(friend).show? %>
+                <%= link_to 'Show', friend %>
+              <% end %>
+              <% if policy(friend).update? %>
+                <%= link_to 'Edit', edit_friend_path(friend) %>
+              <% end %>
+              <% if policy(friend).destroy? %>
+                <%= link_to 'Destroy', friend, method: :delete, data: { confirm: 'Are you sure?' } %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+      <div class="card-trip">
+        <% if policy(Friend).create? %>
+          <%= link_to 'New friend', new_friend_path %>
+        <% end %>
+      </div>
+  </div>
+
+<%# end %>
