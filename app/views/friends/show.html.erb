@@ -27,7 +27,7 @@
       <div class="container button-container mt-3 text-center">
         <h3>
           <div class="container">
-            <%= link_to "Book #{@friend.name}", friend_path(@friend), class: "btn btn-primary btn-lg text-white"%>
+            <%= link_to "Book #{@friend.name}", new_friend_booking_path(@friend), class: "btn btn-primary btn-lg text-white"%>
           </div>
           <div class="container mt-5">
             <%= link_to "Back to list", friends_path, class: "btn btn-secondary text-white"%>
