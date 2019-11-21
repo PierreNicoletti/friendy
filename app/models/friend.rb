@@ -2,6 +2,11 @@ class Friend < ApplicationRecord
   has_many :bookings
   belongs_to :user
   has_one_attached :photo
+  validates :name, presence: true
+  validates :gender, presence: true
+  validates :address, presence: true
+  validates :price, presence: true, inclusion: { in: 0..10_000 }
+  validates :birth_date, presence: true
 
   geocoded_by :address do |obj, results|
     if results.first.present?
@@ -16,4 +21,11 @@ class Friend < ApplicationRecord
     return if birth_date.nil?
     (Date.today - birth_date.to_date).abs.round / 365
   end
+
+  include PgSearch::Model
+  pg_search_scope :search_by_multiple,
+    against: [:name, :city, :description],
+    using: {
+      tsearch: { prefix: true } # <-- now `superman batm` will return something!
+    }
 end
