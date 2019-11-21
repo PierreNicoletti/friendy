@@ -10,6 +10,10 @@ class Booking < ApplicationRecord
     display_date(end_date)
   end
 
+  def length_in_days
+    (end_date - start_date).to_i
+  end
+
   private
 
   def explicit_month(month)
