@@ -14,15 +14,19 @@ class Booking < ApplicationRecord
     (end_date - start_date).to_i
   end
 
+  def passed?
+    return end_date < Date.today
+  end
+
   private
 
   def explicit_month(month)
-    months = ["January","February","March","April","May","June","July","August","September","October","November","December"]
+    months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
     return months[month - 1]
   end
 
   def explicit_day(day)
-    days = %w[Sunday Monday Tuesday Wednesday Thursday Friday Saturday]
+    days = %w[Sun Mon Tues Wed Thurs Fri Sat]
     return days[day]
   end
 
@@ -30,6 +34,7 @@ class Booking < ApplicationRecord
     month = date.month
     day = date.day
     w_day = date.wday
-    return "#{explicit_day(w_day)} #{day} #{explicit_month(month)}"
+    year = date.year
+    return "#{explicit_day(w_day)} #{day} #{explicit_month(month)} #{year}"
   end
 end
