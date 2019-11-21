@@ -27,6 +27,13 @@ class FriendsController < ApplicationController
         infoWindow: render_to_string(partial: "info_window", locals: { friend: friend })
       }
     end
+    unless current_user.nil?
+      @markers << {
+        lat: current_user.latitude,
+        lng: current_user.longitude,
+        infoWindow: render_to_string(partial: "info_user", locals: { user: current_user })
+      }
+    end
   end
 
   def show
@@ -34,8 +41,16 @@ class FriendsController < ApplicationController
     # @geo = @friend.geocoded
     @markers = [{
       lat: @friend.latitude,
-      lng: @friend.longitude
+      lng: @friend.longitude,
+      infoWindow: render_to_string(partial: "info_window_show", locals: { friend: @friend })
     }]
+    unless current_user.nil?
+      @markers << {
+        lat: current_user.latitude,
+        lng: current_user.longitude,
+        infoWindow: render_to_string(partial: "info_user_show", locals: { user: current_user })
+      }
+    end
   end
 
   def edit
