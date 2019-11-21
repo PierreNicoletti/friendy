@@ -1,4 +1,14 @@
-<div class="cards">
+<div class="d-flex">
+<%= form_tag( friends_path, {method: :get, class: 'form-inline'}) do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control mr-2 w-70vw",
+    placeholder: "Find a friend"
+  %>
+  <%= submit_tag "Search", class: "btn btn-dark" %>
+<% end %>
+</div>
+<div class="cards mt-4">
   <% @friends.each do |friend| %>
   <%= link_to friend_path(friend) do %>
   <div class="card-trip">

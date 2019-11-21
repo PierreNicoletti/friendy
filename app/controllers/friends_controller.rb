@@ -17,9 +17,13 @@ class FriendsController < ApplicationController
   end
 
   def index
-    @friends = policy_scope(Friend).order(created_at: :desc)
-    @geos = Friend.geocoded #returns friends with coordinates
-    @markers = @geos.map do |friend|
+    if params[:query].present?
+      @friends = policy_scope(Friend).search_by_multiple(params[:query])
+    else
+      @friends = policy_scope(Friend).order(created_at: :desc)
+    end
+    # @geos = Friend.geocoded #returns friends with coordinates
+    @markers = @friends.map do |friend|
       {
         lat: friend.latitude,
         lng: friend.longitude,
