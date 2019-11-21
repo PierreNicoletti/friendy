@@ -1,7 +1,7 @@
 import "bootstrap";
 
 //Navbar & Banner
-import { initUpdateNavbarOnScroll } from '../components';
+import { initUpdateNavbarOnScroll } from '../components/navbar';
 import { loadDynamicBannerText } from '../components/banner';
 initUpdateNavbarOnScroll();
 loadDynamicBannerText();
@@ -19,4 +19,3 @@ import "../plugins/flatpickr"
 //Autocomplete
 import { initAutocomplete } from '../plugins/init_autocomplete';
 initAutocomplete();
-
