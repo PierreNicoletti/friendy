@@ -60,7 +60,6 @@ laura.save!
 lionel.save!
 laetitia.save!
 
-
 puts 'Creating bookings...'
 Booking.create!(friend: julie, user: pierre, start_date: "15/11/2019", end_date: "16/11/2019");
 Booking.create!(friend: tina, user: pierre, start_date: "15/12/2019", end_date: "16/12/2019");
