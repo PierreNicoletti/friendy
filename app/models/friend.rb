@@ -16,4 +16,11 @@ class Friend < ApplicationRecord
     return if birth_date.nil?
     (Date.today - birth_date.to_date).abs.round / 365
   end
+
+  include PgSearch::Model
+  pg_search_scope :search_by_multiple,
+    against: [ :name, :city, :description ],
+    using: {
+      tsearch: { prefix: true } # <-- now `superman batm` will return something!
+    }
 end
