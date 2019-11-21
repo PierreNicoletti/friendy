@@ -1,7 +1,13 @@
-h1 {
+h1, h5, p, h2, h3 {
   color: $deep-brown;
 }
 
-h3 {
+.form-row {
+  color: $deep-brown;
+}
 
+.book-card-title {
+  font-size: 22px;
+  font-family: 'Pacifico', cursive;
+  color: $deep-brown;
 }

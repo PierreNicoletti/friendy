@@ -1,5 +1,5 @@
 <div class="container m-3">
-  <h1>Meet <%=@friend.name %></h1>
+  <h1 class="book-title">Meet <%=@friend.name %></h1>
     <p>
       <%= @friend.name %> is <%= @friend.age %> and lives in <%= @friend.city%>.
     </p>
@@ -24,23 +24,28 @@
   <div class="col-4">
     <h4 text-center>
        <p class="font-weight-normal text-center">
-        Price per day: <%=@friend.price%> €
+        Price per day: <%=@friend.price.round%> €
       </p>
     </h4>
     <div class="container button-container mt-3 text-center">
-      <h3>
-         <div class="container mt-3 ">
-            <h1 class="btn btn-primary btn-lg text-white">Book <%= @friend.name %></h1>
-            <%= simple_form_for [@friend, @booking] do |f| %>
-              <%= f.input :start_date %>
-              <%= f.input :end_date %>
-              <%= f.submit 'submit', class: 'btn btn-primary w-100 mb-5' %>
-            <% end %>
+     <div class="card mt-3 p-3">
+        <h5 class="book-card-title">Enjoy <%= @friend.name %>'s company!</h5>
+        <%= simple_form_for [@friend, @booking] do |f| %>
+          <div class="form-row p-3">
+            <div class="col">
+              <%= f.input :start_date, type: "text", class: "form-control", as: :string, input_html: { id: "range_start" } %>
+            </div>
+            <div class="col">
+              <%= f.input :end_date, type: "text", class: "form-control", as: :string, input_html: { id: "range_end" } %>
+            </div>
           </div>
-          <div class="container mt-3 ">
-            <%= link_to "Back to list", friends_path, class: "btn btn-secondary text-white"%>
-          </div>
-        </h3>
+
+          <%= f.submit 'Book!', class: 'btn btn-primary w-50 mb-2' %>
+        <% end %>
+      </div>
+      <div class="container mt-3 ">
+        <%= link_to "Back to list", friends_path, class: "btn btn-secondary text-white"%>
+      </div>
       </div>
     </div>
   </div>
