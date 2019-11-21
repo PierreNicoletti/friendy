@@ -54,8 +54,8 @@
               </div>
             <% end %>
             <div class="card-tools">
-              <a href="www.google.com"><div class="btn btn-light card-delete">Edit</div></a>
-              <a href="www.google.com"><div class="btn btn-light card-delete">Delete</div></a>
+              <%= link_to 'Edit', edit_friend_path(friend), class: "btn btn-light card-delete" %>
+              <%=link_to "Delete", friend_path(friend), class: "btn btn-light card-delete", method: :delete, data: {confirm: "Are you sure you want to delete #{friend.name}?"} %>
             </div>
           </div>
           <% end %>

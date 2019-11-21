@@ -64,7 +64,7 @@ class FriendsController < ApplicationController
 
   def destroy
     @friend.destroy
-    redirect_to friends_path
+    redirect_to dashboard_path
   end
 
   private
