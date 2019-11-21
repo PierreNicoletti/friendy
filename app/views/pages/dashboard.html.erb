@@ -75,8 +75,9 @@
         <thead>
           <tr>
             <th scope="col">#</th>
-            <th scope="col">Past</th>
+            <th scope="col">Status</th>
             <th scope="col">Friend</th>
+            <th scope="col">Booked by</th>
             <th scope="col">Booking period</th>
             <th scope="col">Total price</th>
           </tr>
@@ -88,8 +89,15 @@
             <% friend.bookings.each do |booking| %>
               <tr>
                 <th scope="row"><%= i %></th>
-                <td>yes</td>
+                <td>
+                  <% if booking.passed? %>
+                    <span class="badge badge-secondary">Passed</span>
+                  <% else %>
+                    <span class="badge badge-primary">Future</span>
+                  <% end %>
+                </td>
                 <td><%= friend.name %></td>
+                <td><%= booking.user.first_name %> <%= booking.user.last_name %></td>
                 <td><%= booking.display_start_date %> - <%= booking.display_end_date %></td>
                 <td><%= (booking.length_in_days*friend.price).round %> €</td>
               </tr>
@@ -99,6 +107,7 @@
           <% end %>
           <tr>
                 <th scope="row">Total</th>
+                <td></td>
                 <td></td>
                 <td></td>
                 <td></td>

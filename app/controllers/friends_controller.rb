@@ -63,7 +63,7 @@ class FriendsController < ApplicationController
   end
 
   def destroy
-    @friend.destroy
+    @friend.destroy if @friend.bookings.empty?
     redirect_to dashboard_path
   end
 
