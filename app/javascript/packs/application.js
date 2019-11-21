@@ -13,6 +13,10 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 import { initMapbox } from '../plugins/init_mapbox';
 initMapbox();
 
+//Date picker
+import "../plugins/flatpickr"
+
 //Autocomplete
 import { initAutocomplete } from '../plugins/init_autocomplete';
 initAutocomplete();
+

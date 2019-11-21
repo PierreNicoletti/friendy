@@ -1,7 +1,31 @@
-h1 {
+h1, h5, p, h2, h3 {
   color: $deep-brown;
 }
 
-h3 {
 
+// .booking-container {
+//   display: flex;
+// }
+
+.show-container {
+  display: flex;
+  position: relative;
+}
+
+.booking-card {
+  position: sticky;
+  top: 200px;
+
+}
+
+
+
+.form-row .booking-row {
+  color: $deep-brown;
+}
+
+.book-card-title {
+  font-size: 22px;
+  font-family: 'Pacifico', cursive;
+  color: $deep-brown;
 }

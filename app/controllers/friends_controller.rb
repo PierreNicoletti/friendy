@@ -37,6 +37,8 @@ class FriendsController < ApplicationController
   end
 
   def show
+    @booking = Booking.new
+    authorize @booking
     # @age = age(@friend)
     # @geo = @friend.geocoded
     @markers = [{
