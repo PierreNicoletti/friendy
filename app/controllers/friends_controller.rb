@@ -27,14 +27,16 @@ class FriendsController < ApplicationController
       {
         lat: friend.latitude,
         lng: friend.longitude,
-        infoWindow: render_to_string(partial: "info_window", locals: { friend: friend })
+        infoWindow: render_to_string(partial: "info_window", locals: { friend: friend }),
+        image_url: helpers.asset_url('https://i.gifer.com/2hbB.gif')
       }
     end
     unless current_user.nil?
       @markers << {
         lat: current_user.latitude,
         lng: current_user.longitude,
-        infoWindow: render_to_string(partial: "info_user", locals: { user: current_user })
+        infoWindow: render_to_string(partial: "info_user", locals: { user: current_user }),
+        image_url: helpers.asset_url('https://media.giphy.com/media/U2AH7M3nag85Ko4wVl/giphy.gif')
       }
     end
   end
