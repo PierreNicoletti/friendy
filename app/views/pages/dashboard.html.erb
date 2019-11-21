@@ -1,7 +1,55 @@
-<%# current_user = User.find_by(email: "pierre@friendy.com") %>
+<div class="d-flex justify-content-center">
+<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="info-tab" data-toggle="pill" href="#info" role="tab" aria-controls="info" aria-selected="true">My info</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="pimp-tab" data-toggle="pill" href="#pimp" role="tab" aria-controls="pimp" aria-selected="false">My pimp dashboard</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="renter-tab" data-toggle="pill" href="#renter" role="tab" aria-controls="renter" aria-selected="false">My renter dashboard</a>
+  </li>
+</ul>
+</div>
+<div class="tab-content" id="pills-tabContent">
+
+  <div class="tab-pane fade show active" id="info" role="tabpanel" aria-labelledby="info-tab">
+
+
+  <div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">My info</h5>
+      <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <a href="#" class="card-link">Card link</a>
+      <a href="#" class="card-link">Another link</a>
+    </div>
+  </div>
+
+
+  </div>
+  <div class="tab-pane fade" id="pimp" role="tabpanel" aria-labelledby="pimp-tab">
+
+
+
+  My renter dashboard
+
+
+
+  </div>
+    <div class="tab-pane fade" id="renter" role="tabpanel" aria-labelledby="renter-tab">
+
+
+
+  My toto dashboard
+
+
+
+  </div>
+</div>
 
 <div class="container mt-2">
-  <h1 class="mb-3">Hello <%= current_user.email %></h1>
+  <h1 class="mb-3">Hello <%= current_user.first_name %></h1>
   <% unless current_user.bookings.empty? %>
     <h3 class="m-3 pt-2">Your Bookings</h3>
     <div class="cards">
@@ -42,7 +90,7 @@
           <div class="card-trip-infos">
             <div>
               <h2><%= friend.name %></h2>
-              <p><%= friend.age %> years old, <%= friend.city %></p>
+              <p><%= friend.age %> years old, <%= friend.address %></p>
             </div>
             <h2<%= friend.price %>/h2>
           </div>
