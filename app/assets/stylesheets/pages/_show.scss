@@ -2,7 +2,25 @@ h1, h5, p, h2, h3 {
   color: $deep-brown;
 }
 
-.form-row {
+
+// .booking-container {
+//   display: flex;
+// }
+
+.show-container {
+  display: flex;
+  position: relative;
+}
+
+.booking-card {
+  position: sticky;
+  top: 200px;
+
+}
+
+
+
+.form-row .booking-row {
   color: $deep-brown;
 }
 
