@@ -10,6 +10,36 @@
   object-fit: cover;
 }
 
+.card-small {
+  img {
+    height: 100px;
+    width: 100%;
+    object-fit: cover;
+  }
+}
+
+.card-tools {
+  position: absolute;
+  top: 70px;
+  left: 5px;
+  display: none;
+}
+
+.card-delete {
+  margin: 0;
+  font-size: small;
+  padding: 0px 3px 0px 3px;
+}
+
+.card-wrapper {
+  position: relative;
+  &:hover {
+    .card-tools {
+      display:block;
+    }
+  }
+}
+
 .card-trip h2 {
   font-size: 16px;
   font-weight: bold;
