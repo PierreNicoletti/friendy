@@ -23,7 +23,7 @@
         </li>
         <li>
           <div class="avatar">
-            <%= cl_image_tag current_user.photo.key, width: 40, height: 40, crop: :fill, gravity: :face %>
+            <div style="background-image: url('http://res.cloudinary.com/dvw50icen/image/upload/<%= current_user.photo.key %>');" class="avatar-mine"></div>
           </div>
         </li>
       <% else %>
