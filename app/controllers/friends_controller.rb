@@ -28,7 +28,7 @@ class FriendsController < ApplicationController
         lat: friend.latitude,
         lng: friend.longitude,
         infoWindow: render_to_string(partial: "info_window", locals: { friend: friend }),
-        image_url: helpers.asset_url('https://i.gifer.com/2hbB.gif')
+        image_url: helpers.asset_url('https://i.gifer.com/3AlV.gif')
       }
     end
     unless current_user.nil?
@@ -36,7 +36,7 @@ class FriendsController < ApplicationController
         lat: current_user.latitude,
         lng: current_user.longitude,
         infoWindow: render_to_string(partial: "info_user", locals: { user: current_user }),
-        image_url: helpers.asset_url('https://media.giphy.com/media/U2AH7M3nag85Ko4wVl/giphy.gif')
+        image_url: helpers.asset_url('https://i.gifer.com/72gi.gif')
       }
     end
   end
@@ -49,13 +49,15 @@ class FriendsController < ApplicationController
     @markers = [{
       lat: @friend.latitude,
       lng: @friend.longitude,
-      infoWindow: render_to_string(partial: "info_window_show", locals: { friend: @friend })
+      infoWindow: render_to_string(partial: "info_window_show", locals: { friend: @friend }),
+      image_url: helpers.asset_url('https://i.gifer.com/3AlV.gif')
     }]
     unless current_user.nil?
       @markers << {
         lat: current_user.latitude,
         lng: current_user.longitude,
-        infoWindow: render_to_string(partial: "info_user_show", locals: { user: current_user })
+        infoWindow: render_to_string(partial: "info_user_show", locals: { user: current_user }),
+        image_url: helpers.asset_url('https://i.gifer.com/72gi.gif')
       }
     end
   end
