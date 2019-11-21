@@ -3,8 +3,8 @@ class Friend < ApplicationRecord
   belongs_to :user
   has_one_attached :photo
 
-  geocoded_by :city
-  after_validation :geocode, if: :will_save_change_to_city?
+  geocoded_by :address
+  after_validation :geocode, if: :will_save_change_to_address?
 
   def age
     return if birth_date.nil?
