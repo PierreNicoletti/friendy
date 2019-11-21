@@ -14,31 +14,37 @@
 </div>
 <div class="tab-content" id="pills-tabContent">
 
+  <!-- Tab d'infos de profil -->
   <div class="tab-pane fade show active" id="info" role="tabpanel" aria-labelledby="info-tab">
-
-
-  <div class="card" style="width: 18rem;">
-    <div class="card-body">
-      <h5 class="card-title">My info</h5>
-      <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="card-link">Card link</a>
-      <a href="#" class="card-link">Another link</a>
+    <div class="d-flex flex-column align-items-center mt-5">
+      <%= image_tag "https://kitt.lewagon.com/placeholder/users/cveneziani", class: "avatar", alt: "avatar" %>
+      <div class="card" style="width: 25rem;">
+        <div class="card-body">
+          <center><h3>My profile info</h3></center>
+          <br>
+          Photo, addresse, birthdate, description, gender
+          <p><strong>First Name:</strong></p>
+          <p><strong>Last Name:</strong></p>
+          <p><strong>Email:</strong> <%= current_user.email %></p>
+          <p><strong>Password:</strong> •••••••••</p>
+          <div class="text-right"><a href="#" class="card-link">Edit profile</a></div>
+        </div>
+      </div>
     </div>
   </div>
 
-
-  </div>
+  <!-- Tab de dashboard de pimp -->
   <div class="tab-pane fade" id="pimp" role="tabpanel" aria-labelledby="pimp-tab">
 
 
 
-  My renter dashboard
+
 
 
 
   </div>
-    <div class="tab-pane fade" id="renter" role="tabpanel" aria-labelledby="renter-tab">
+  <!-- Tab de dashboard de renter -->
+  <div class="tab-pane fade" id="renter" role="tabpanel" aria-labelledby="renter-tab">
 
 
 
