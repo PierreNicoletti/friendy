@@ -65,13 +65,13 @@ class FriendsController < ApplicationController
 
   def destroy
     @friend.destroy
-    redirect_to friends_path
+    redirect_to dashboard_path
   end
 
   private
 
   def friend_params
-    params.require(:friend).permit(:name, :birth_date, :gender, :city, :description, :price, :photo)
+    params.require(:friend).permit(:name, :birth_date, :gender, :address, :description, :price, :photo)
   end
 
   def set_friend

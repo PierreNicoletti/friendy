@@ -18,12 +18,12 @@ lionel = User.create!(email: "lionel@friendy.com", password: "password", first_n
 laetitia = User.create!(email: "laetitia@friendy.com", password: "password", first_name: "Laetitia", last_name: "D", address: "Paris")
 
 puts 'Creating friends...'
-julie = Friend.create!(user: laura, name: "Julie", birth_date: "01/05/1999", gender: "F", address: "Paris", description: "Very friendly person hanger to meet new people. Lorem ipsum dolor sit amet, consectetur adipisicing elit.", price: 320)
-david = Friend.create!(user: laura, name: "David", birth_date: "01/02/1987", gender: "M", address: "Los Angeles", description: "Ready to rock your world. Lorem ipsum dolor sit amet, consectetur adipisicing elit.", price: 220)
-tina = Friend.create!(user: laura, name: "Tina", birth_date: "01/05/1989", gender: "F", address: "London", description: "Very smily person indeed. Lorem ipsum dolor sit amet, consectetur adipisicing elit.", price: 290)
-bob = Friend.create!(user: lionel, name: "Bob", birth_date: "01/05/1962", gender: "M", address: "Phoenix (AZ)", description: "I might look scary but I'm very nice, trust me. Lorem ipsum dolor sit amet, consectetur adipisicing elit.", price: 80)
-lisa = Friend.create!(user: lionel, name: "Lisa", birth_date: "01/05/1980", gender: "L", address: "Nantes", description: "Salut, moi c'est Lisa ! J'aime dessiner, sortir avec mes amis, et regarder des séries. Lorem ipsum dolor sit amet, consectetur adipisicing elit.", price: 100)
-jenny = Friend.create!(user: lionel, name: "Jenny", birth_date: "01/05/1990", gender: "L", address: "Paris", description: "Je sais faire la roue et les crêpes au sucre. Lorem ipsum dolor sit amet, consectetur adipisicing elit.", price: 75)
+julie = Friend.create!(user: laura, name: "Julie", birth_date: "01/05/1999", gender: "female", address: "Paris", description: "Very friendly person hanger to meet new people. Lorem ipsum dolor sit amet, consectetur adipisicing elit.", price: 320)
+david = Friend.create!(user: laura, name: "David", birth_date: "01/02/1987", gender: "male", address: "Los Angeles", description: "Ready to rock your world. Lorem ipsum dolor sit amet, consectetur adipisicing elit.", price: 220)
+tina = Friend.create!(user: laura, name: "Tina", birth_date: "01/05/1989", gender: "female", address: "London", description: "Very smily person indeed. Lorem ipsum dolor sit amet, consectetur adipisicing elit.", price: 290)
+bob = Friend.create!(user: lionel, name: "Bob", birth_date: "01/05/1962", gender: "male", address: "Phoenix (AZ)", description: "I might look scary but I'm very nice, trust me. Lorem ipsum dolor sit amet, consectetur adipisicing elit.", price: 80)
+lisa = Friend.create!(user: lionel, name: "Lisa", birth_date: "01/05/1980", gender: "female", address: "Nantes", description: "Salut, moi c'est Lisa ! J'aime dessiner, sortir avec mes amis, et regarder des séries. Lorem ipsum dolor sit amet, consectetur adipisicing elit.", price: 100)
+jenny = Friend.create!(user: lionel, name: "Jenny", birth_date: "01/05/1990", gender: "male", address: "Paris", description: "Je sais faire la roue et les crêpes au sucre. Lorem ipsum dolor sit amet, consectetur adipisicing elit.", price: 75)
 
 puts 'Linking with photos...'
 julie_pic = URI.open("https://images.unsplash.com/photo-1485218173291-62104d18e1c1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80")
