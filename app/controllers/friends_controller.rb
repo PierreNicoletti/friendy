@@ -19,7 +19,6 @@ class FriendsController < ApplicationController
   def index
     @friends = policy_scope(Friend).order(created_at: :desc)
     @geos = Friend.geocoded #returns friends with coordinates
-
     @markers = @geos.map do |friend|
       {
         lat: friend.latitude,
