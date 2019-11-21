@@ -112,9 +112,64 @@
   <!-- Tab de dashboard de renter -->
   <div class="tab-pane fade" id="renter" role="tabpanel" aria-labelledby="renter-tab">
 
+<h3>My past bookings</h3>
+      <div class="border border-dark p-4 w-100 border-bottom-0 border-left-0 border-right-0">
+        <br>
+        <div class="cards-small">
+          <% current_user.friends.each do |friend| %>
+          <div class="card-wrapper">
+            <%= link_to friend_path(friend) do %>
+              <div class="card-trip card-small">
+                <%= cl_image_tag friend.photo.key, gravity: :face if friend.photo.attached? %>
+                <div class="card-trip-infos">
+                  <div>
+                    <h2><%= friend.name %></h2>
+                  </div>
+                  <p><%= friend.price.round %> € / day</p>
+                </div>
+              </div>
+            <% end %>
+          </div>
+          <% end %>
+        </div>
+      </div>
+      <br>
+
+    <!-- My next bookings -->
+<h3>My next bookings</h3>
+      <div class="border border-dark p-4 w-100 border-bottom-0 border-left-0 border-right-0">
+        <br>
+        <div class="cards-small">
+          <% current_user.friends.each do |friend| %>
+          <div class="card-wrapper">
+            <%= link_to friend_path(friend) do %>
+              <div class="card-trip card-small">
+                <%= cl_image_tag friend.photo.key, gravity: :face if friend.photo.attached? %>
+                <div class="card-trip-infos">
+                  <div>
+                    <h2><%= friend.name %></h2>
+                  </div>
+                  <p><%= friend.price.round %> € / day</p>
+                </div>
+              </div>
+            <% end %>
+            <div class="card-tools">
+              <a href="www.google.com"><div class="btn btn-light card-delete">Edit</div></a>
+              <a href="www.google.com"><div class="btn btn-light card-delete">Delete</div></a>
+            </div>
+          </div>
+          <% end %>
+        </div>
+        <div class="mt-3">
+          <% if policy(Friend).create? %>
+            <%= link_to 'New friend', new_friend_path, class: "btn btn-secondary text-white mb-2" %>
+          <% end %>
+        </div>
+      </div>
+      <br>
 
 
-  My toto dashboard
+
 
 
 
