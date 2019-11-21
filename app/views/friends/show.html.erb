@@ -30,7 +30,12 @@
     <div class="container button-container mt-3 text-center">
       <h3>
          <div class="container mt-3 ">
-            <%= link_to "Book #{@friend.name}", new_friend_booking_path(@friend), class: "btn btn-primary btn-lg text-white"%>
+            <h1 class="btn btn-primary btn-lg text-white">Book <%= @friend.name %></h1>
+            <%= simple_form_for [@friend, @booking] do |f| %>
+              <%= f.input :start_date %>
+              <%= f.input :end_date %>
+              <%= f.submit 'submit', class: 'btn btn-primary w-100 mb-5' %>
+            <% end %>
           </div>
           <div class="container mt-3 ">
             <%= link_to "Back to list", friends_path, class: "btn btn-secondary text-white"%>

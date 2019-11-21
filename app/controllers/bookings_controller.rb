@@ -1,10 +1,10 @@
 class BookingsController < ApplicationController
 
-  def new
-    @booking = Booking.new
-    @friend = Friend.find(params[:friend_id])
-    authorize @booking
-  end
+  # def new
+  #   @booking = Booking.new
+  #   @friend = Friend.find(params[:friend_id])
+  #   authorize @booking
+  # end
 
   def create
     @booking = current_user.bookings.new(booking_params)
@@ -14,7 +14,7 @@ class BookingsController < ApplicationController
     if @booking.save
       redirect_to dashboard_path #define path
     else
-      render :new
+      render :'friends/show'
     end
   end
 
