@@ -1,23 +1,29 @@
+<div class="d-flex">
+    <div class="col-2 border border-secondary border-bottom-0 border-left-0 border-top-0">
+      <div class="sticky-menu">
+        <ul class="nav flex-column nav-pills mb-3" id="pills-tab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="pimp-tab" data-toggle="pill" href="#pimp" role="tab" aria-controls="pimp" aria-selected="false">My portfolio</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="info-tab" data-toggle="pill" href="#info" role="tab" aria-controls="info" aria-selected="true">My profile</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="renter-tab" data-toggle="pill" href="#renter" role="tab" aria-controls="renter" aria-selected="false">Bookings</a>
+      </li>
+    </ul>
+  </div>
+  </div>
+  <div class="col-10">
 
-<div class="d-flex justify-content-center">
-<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-  <li class="nav-item">
-    <a class="nav-link active" id="info-tab" data-toggle="pill" href="#info" role="tab" aria-controls="info" aria-selected="true">My info</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" id="pimp-tab" data-toggle="pill" href="#pimp" role="tab" aria-controls="pimp" aria-selected="false">Dashboard</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" id="renter-tab" data-toggle="pill" href="#renter" role="tab" aria-controls="renter" aria-selected="false">Bookings</a>
-  </li>
-</ul>
-</div>
-<div class="tab-content" id="pills-tabContent">
+
+    <div class="tab-content" id="pills-tabContent">
+
 
   <!-- Tab d'infos de profil -->
-  <div class="tab-pane fade show active" id="info" role="tabpanel" aria-labelledby="info-tab">
+  <div class="tab-pane fade" id="info" role="tabpanel" aria-labelledby="info-tab">
     <div class="d-flex flex-column align-items-center mt-2">
-      <div class="card mt-3" style="width: 25rem;">
+      <div class="card mt-3" style="width: 40rem;">
         <div class="card-body">
           <center><%= cl_image_tag current_user.photo.key, height: 120, width: 120, crop: :fill, radius: 40%></center>
           <br>
@@ -33,7 +39,7 @@
   </div>
 
   <!-- Tab de dashboard de pimp -->
-  <div class="tab-pane fade" id="pimp" role="tabpanel" aria-labelledby="pimp-tab">
+  <div class="tab-pane fade show active" id="pimp" role="tabpanel" aria-labelledby="pimp-tab">
     <div class=" mt-2 p-4">
 
       <!-- Portfolio of friends -->
@@ -60,10 +66,18 @@
             </div>
           </div>
           <% end %>
-        </div>
-        <div class="mt-3">
+
           <% if policy(Friend).create? %>
-            <%= link_to 'New friend', new_friend_path, class: "btn btn-secondary text-white mb-2" %>
+            <div class="card-trip card-empty d-flex align-items-center justify-content-center text-secondary bg-light">
+             <%= link_to new_friend_path do %>
+              <div class="card-trip-infos">
+                  <center>
+                    <h1 class="text-secondary"><i class="fas fa-plus-circle"></i></h1>
+                    <h2 class="text-secondary">Add new friend</h2>
+                  </center>
+              </div>
+             <% end %>
+            </div>
           <% end %>
         </div>
       </div>
@@ -121,67 +135,68 @@
   </div>
   <!-- Tab de dashboard de renter -->
   <div class="tab-pane fade" id="renter" role="tabpanel" aria-labelledby="renter-tab">
-
-<h3>My past bookings</h3>
-      <div class="border border-dark p-4 w-100 border-bottom-0 border-left-0 border-right-0">
-        <br>
-        <div class="cards-small">
-          <% current_user.friends.each do |friend| %>
-          <div class="card-wrapper">
-            <%= link_to friend_path(friend) do %>
-              <div class="card-trip card-small">
-                <%= cl_image_tag friend.photo.key, gravity: :face if friend.photo.attached? %>
-                <div class="card-trip-infos">
-                  <div>
-                    <h2><%= friend.name %></h2>
-                  </div>
-                  <p><%= friend.price.round %> € / day</p>
-                </div>
-              </div>
-            <% end %>
-          </div>
-          <% end %>
-        </div>
-      </div>
+    <h3>My past bookings</h3>
+    <div class="border border-dark p-4 w-100 border-bottom-0 border-left-0 border-right-0">
       <br>
-
-    <!-- My next bookings -->
-<h3>My next bookings</h3>
-      <div class="border border-dark p-4 w-100 border-bottom-0 border-left-0 border-right-0">
-        <br>
-        <div class="cards-small">
-          <% current_user.friends.each do |friend| %>
-          <div class="card-wrapper">
-            <%= link_to friend_path(friend) do %>
-              <div class="card-trip card-small">
-                <%= cl_image_tag friend.photo.key, gravity: :face if friend.photo.attached? %>
-                <div class="card-trip-infos">
-                  <div>
-                    <h2><%= friend.name %></h2>
-                  </div>
-                  <p><%= friend.price.round %> € / day</p>
+      <div class="cards-small">
+        <% current_user.friends.each do |friend| %>
+        <div class="card-wrapper">
+          <%= link_to friend_path(friend) do %>
+            <div class="card-trip card-small">
+              <%= cl_image_tag friend.photo.key, gravity: :face if friend.photo.attached? %>
+              <div class="card-trip-infos">
+                <div>
+                  <h2><%= friend.name %></h2>
                 </div>
+                <p><%= friend.price.round %> € / day</p>
               </div>
-            <% end %>
-            <div class="card-tools">
-              <a href="www.google.com"><div class="btn btn-light card-delete">Edit</div></a>
-              <a href="www.google.com"><div class="btn btn-light card-delete">Delete</div></a>
             </div>
-          </div>
           <% end %>
         </div>
-        <div class="mt-3">
-          <% if policy(Friend).create? %>
-            <%= link_to 'New friend', new_friend_path, class: "btn btn-secondary text-white mb-2" %>
-          <% end %>
-        </div>
+        <% end %>
       </div>
+    </div>
+    <br>
+    <!-- My next bookings -->
+    <h3>My next bookings</h3>
+    <div class="border border-dark p-4 w-100 border-bottom-0 border-left-0 border-right-0">
       <br>
-
-
+      <div class="cards-small">
+        <% current_user.friends.each do |friend| %>
+        <div class="card-wrapper">
+          <%= link_to friend_path(friend) do %>
+            <div class="card-trip card-small">
+              <%= cl_image_tag friend.photo.key, gravity: :face if friend.photo.attached? %>
+              <div class="card-trip-infos">
+                <div>
+                  <h2><%= friend.name %></h2>
+                </div>
+                <p><%= friend.price.round %> € / day</p>
+              </div>
+            </div>
+          <% end %>
+          <div class="card-tools">
+            <a href="www.google.com"><div class="btn btn-light card-delete">Edit</div></a>
+            <a href="www.google.com"><div class="btn btn-light card-delete">Delete</div></a>
+          </div>
+        </div>
+        <% end %>
+      </div>
+      <div class="mt-3">
+        <% if policy(Friend).create? %>
+          <%= link_to 'New friend', new_friend_path, class: "btn btn-secondary text-white mb-2" %>
+        <% end %>
+      </div>
+    </div>
+    <br>
+  </div>
+</div>
 
 
 
 
   </div>
 </div>
+
+<%# end %>
+
