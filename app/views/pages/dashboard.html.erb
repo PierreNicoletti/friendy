@@ -100,26 +100,37 @@
         <tbody>
           <% i = 1 %>
           <% sum = 0 %>
-          <% current_user.friends.each do |friend| %>
-            <% friend.bookings.each do |booking| %>
+
+            <% @upcoming_pimp_bookings.each do |booking| %>
               <tr>
                 <th scope="row"><%= i %></th>
                 <td>
-                  <% if booking.passed? %>
-                    <span class="badge badge-secondary">Passed</span>
-                  <% else %>
                     <span class="badge badge-primary">Future</span>
-                  <% end %>
                 </td>
-                <td><%= friend.name %></td>
+                <td><%= booking.friend.name %></td>
                 <td><%= booking.user.first_name %> <%= booking.user.last_name %></td>
                 <td><%= booking.display_start_date %> - <%= booking.display_end_date %></td>
-                <td><%= (booking.length_in_days*friend.price).round %> €</td>
+                <td><%= (booking.length_in_days*booking.friend.price).round %> €</td>
               </tr>
-              <% i+= 1 %>
-              <% sum+= (booking.length_in_days*friend.price).round %>
+              <% i += 1 %>
+              <% sum += (booking.length_in_days*booking.friend.price).round %>
             <% end %>
-          <% end %>
+
+            <% @passed_pimp_bookings.each do |booking| %>
+              <tr>
+                <th scope="row"><%= i %></th>
+                <td>
+                    <span class="badge badge-secondary">Passed</span>
+                </td>
+                <td><%= booking.friend.name %></td>
+                <td><%= booking.user.first_name %> <%= booking.user.last_name %></td>
+                <td><%= booking.display_start_date %> - <%= booking.display_end_date %></td>
+                <td><%= (booking.length_in_days*booking.friend.price).round %> €</td>
+              </tr>
+              <% i += 1 %>
+              <% sum += (booking.length_in_days*booking.friend.price).round %>
+            <% end %>
+
           <tr>
                 <th scope="row">Total</th>
                 <td></td>
