@@ -1,0 +1,11 @@
+const removeAlert = () => {
+  document.querySelector("#alert").remove();
+};
+
+<% if @friend.bookings.empty? %>
+  document.querySelector("[data-friend-id='<%= @friend.id %>']").remove();
+<% else %>
+  document.querySelector("#portfolio").insertAdjacentHTML('beforeend', '<span class="badge badge-danger" id="alert">You can\'t delete this friend because he/she has bookings linked to it.</span>');
+  setTimeout(removeAlert, 5000);
+<% end %>
+

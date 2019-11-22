@@ -43,11 +43,11 @@
 
       <!-- Portfolio of friends -->
       <h3>My portfolio of friends</h3>
-      <div class="border border-dark p-4 w-100 border-bottom-0 border-left-0 border-right-0">
+      <div class="border border-dark p-4 w-100 border-bottom-0 border-left-0 border-right-0" id="portfolio">
         <br>
         <div class="cards-small">
           <% current_user.friends.each do |friend| %>
-          <div class="card-wrapper">
+          <div class="card-wrapper" data-friend-id="<%= friend.id %>">
             <%= link_to friend_path(friend) do %>
               <div class="card-trip card-small">
                 <%= cl_image_tag friend.photo.key, gravity: :face if friend.photo.attached? %>
@@ -61,7 +61,7 @@
             <% end %>
             <div class="card-tools">
               <%= link_to 'Edit', edit_friend_path(friend), class: "btn btn-light card-delete" %>
-              <%=link_to "Delete", friend_path(friend), class: "btn btn-light card-delete", method: :delete, data: {confirm: "Are you sure you want to delete #{friend.name}?"} %>
+              <%=link_to "Delete", friend_path(friend), class: "btn btn-light card-delete", method: :delete, data: {confirm: "Are you sure you want to delete #{friend.name}?"}, remote: true %>
             </div>
           </div>
           <% end %>
@@ -79,8 +79,9 @@
             </div>
           <% end %>
         </div>
+        <br>
       </div>
-      <br>
+
 
     <!-- Bookings dashboard -->
     <h3>My revenue dashboard</h3>

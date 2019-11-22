@@ -72,7 +72,6 @@ class FriendsController < ApplicationController
 
   def destroy
     @friend.destroy if @friend.bookings.empty?
-    redirect_to dashboard_path
   end
 
   private
