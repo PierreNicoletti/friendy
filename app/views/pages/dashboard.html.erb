@@ -147,7 +147,6 @@
               <h2><%= booking.friend.name %></h2>
               <p>Booked from <%= booking.display_start_date %> to <%= booking.display_end_date %> </p>
               <p>Total cost: <%= (booking.length_in_days*booking.friend.price).round %> € </p>
-              <p>Your rating: <% 3.times {%><i class="fa fa-star"></i><% } %></p>
             </div>
             <div>
               <%=link_to "Delete booking", booking_path(booking), class: "btn btn-sm btn-light m-2", method: :delete, data: {confirm: "Are you sure you want to delete your booking with #{booking.friend.name}?"} %>
@@ -168,7 +167,6 @@
                 <h2><%= booking.friend.name %></h2>
                 <p>Booked from <%= booking.display_start_date %> to <%= booking.display_end_date %> </p>
                 <p>Total cost: <%= (booking.length_in_days*booking.friend.price).round %> € </p>
-                <p>Your rating: <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> </p>
               </div>
           </div>
         <% end %>
