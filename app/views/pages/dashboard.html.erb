@@ -3,13 +3,13 @@
       <div class="sticky-menu">
         <ul class="nav flex-column nav-pills mb-3" id="pills-tab" role="tablist">
       <li class="nav-item">
-        <a class="nav-link active" id="pimp-tab" data-toggle="pill" href="#pimp" role="tab" aria-controls="pimp" aria-selected="false">My portfolio</a>
+        <a class="nav-link active" id="renter-tab" data-toggle="pill" href="#renter" role="tab" aria-controls="renter" aria-selected="false">My bookings</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" id="info-tab" data-toggle="pill" href="#info" role="tab" aria-controls="info" aria-selected="true">My profile</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" id="renter-tab" data-toggle="pill" href="#renter" role="tab" aria-controls="renter" aria-selected="false">Bookings</a>
+        <a class="nav-link" id="pimp-tab" data-toggle="pill" href="#pimp" role="tab" aria-controls="pimp" aria-selected="false">My portfolio</a>
       </li>
     </ul>
   </div>
@@ -32,14 +32,13 @@
           <p><strong>Address: </strong><%= current_user.address %></p>
           <p><strong>Email: </strong><%= current_user.email %></p>
           <p><strong>Password: </strong> •••••••••</p>
-          <div class="text-right"><a href="#" class="card-link">Edit profile</a></div>
         </div>
       </div>
     </div>
   </div>
 
   <!-- Tab de dashboard de pimp -->
-  <div class="tab-pane fade show active" id="pimp" role="tabpanel" aria-labelledby="pimp-tab">
+  <div class="tab-pane fade" id="pimp" role="tabpanel" aria-labelledby="pimp-tab">
     <div class=" mt-2 p-4">
 
       <!-- Portfolio of friends -->
@@ -133,9 +132,9 @@
       </div>
     </div>
   </div>
-  <!-- Tab de dashboard de renter -->
-  <div class="tab-pane fade" id="renter" role="tabpanel" aria-labelledby="renter-tab">
 
+  <!-- Tab de dashboard de renter -->
+  <div class="tab-pane fade show active" id="renter" role="tabpanel" aria-labelledby="renter-tab">
     <!-- My next bookings -->
     <h3>My next bookings</h3>
     <div class="border border-dark p-4 w-100 border-bottom-0 border-left-0 border-right-0">
