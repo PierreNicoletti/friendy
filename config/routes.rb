@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :friends do
     resources :bookings, only: [:create]
   end
+  resources :bookings, only: [:destroy]
   devise_for :users
   get '/dashboard', to: 'pages#dashboard', as: :dashboard
   root to: 'friends#index'

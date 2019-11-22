@@ -18,6 +18,13 @@ class BookingsController < ApplicationController
     end
   end
 
+  def destroy
+    @booking = current_user.bookings.find(params[:id])
+    authorize @booking
+    @booking.destroy
+    redirect_to dashboard_path
+  end
+
   private
 
   def booking_params
