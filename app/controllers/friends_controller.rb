@@ -17,20 +17,26 @@ class FriendsController < ApplicationController
   end
 
   def index
-    @friends = policy_scope(Friend).order(created_at: :desc)
-    @geos = Friend.geocoded #returns friends with coordinates
-    @markers = @geos.map do |friend|
+    if params[:query].present?
+      @friends = policy_scope(Friend).search_by_multiple(params[:query])
+    else
+      @friends = policy_scope(Friend).order(created_at: :desc)
+    end
+    # @geos = Friend.geocoded #returns friends with coordinates
+    @markers = @friends.map do |friend|
       {
         lat: friend.latitude,
         lng: friend.longitude,
-        infoWindow: render_to_string(partial: "info_window", locals: { friend: friend })
+        infoWindow: render_to_string(partial: "info_window", locals: { friend: friend }),
+        image_url: helpers.asset_url('https://i.gifer.com/3AlV.gif')
       }
     end
     unless current_user.nil?
       @markers << {
         lat: current_user.latitude,
         lng: current_user.longitude,
-        infoWindow: render_to_string(partial: "info_user", locals: { user: current_user })
+        infoWindow: render_to_string(partial: "info_user", locals: { user: current_user }),
+        image_url: helpers.asset_url('https://i.gifer.com/72gi.gif')
       }
     end
   end
@@ -43,13 +49,15 @@ class FriendsController < ApplicationController
     @markers = [{
       lat: @friend.latitude,
       lng: @friend.longitude,
-      infoWindow: render_to_string(partial: "info_window_show", locals: { friend: @friend })
+      infoWindow: render_to_string(partial: "info_window_show", locals: { friend: @friend }),
+      image_url: helpers.asset_url('https://i.gifer.com/3AlV.gif')
     }]
     unless current_user.nil?
       @markers << {
         lat: current_user.latitude,
         lng: current_user.longitude,
-        infoWindow: render_to_string(partial: "info_user_show", locals: { user: current_user })
+        infoWindow: render_to_string(partial: "info_user_show", locals: { user: current_user }),
+        image_url: helpers.asset_url('https://i.gifer.com/72gi.gif')
       }
     end
   end
