@@ -10,18 +10,23 @@
 </div>
 <div class="cards mt-4">
   <% @friends.each do |friend| %>
-  <%= link_to friend_path(friend) do %>
-  <div class="card-trip">
-    <%= cl_image_tag friend.photo.key if friend.photo.attached? %>
-    <div class="card-trip-infos">
-      <div>
-        <h2><%= friend.name %></h2>
-        <p> <%= friend.age %> years old, <%= friend.city %></p>
-      </div>
-      <h2> <%= friend.price.round if friend.price.present? %> € / day</h2>
+    <div class="card-wrapper-2">
+      <% if friend.user == current_user %>
+        <div class="card-owner"><span class="badge badge-primary">Portfolio</span></div>
+      <% end %>
+      <%= link_to friend_path(friend) do %>
+        <div class="card-trip">
+          <%= cl_image_tag friend.photo.key if friend.photo.attached? %>
+          <div class="card-trip-infos">
+            <div>
+              <h2><%= friend.name %></h2>
+              <p> <%= friend.age %> years old, <%= friend.city %></p>
+            </div>
+            <h2> <%= friend.price.round if friend.price.present? %> € / day</h2>
+          </div>
+        </div>
+      <% end %>
     </div>
-  </div>
-  <% end %>
   <% end %>
 </div>
 

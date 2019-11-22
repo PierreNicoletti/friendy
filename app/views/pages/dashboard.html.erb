@@ -3,13 +3,13 @@
       <div class="sticky-menu">
         <ul class="nav flex-column nav-pills mb-3" id="pills-tab" role="tablist">
       <li class="nav-item">
-        <a class="nav-link active" id="pimp-tab" data-toggle="pill" href="#pimp" role="tab" aria-controls="pimp" aria-selected="false">My portfolio</a>
+        <a class="nav-link active" id="renter-tab" data-toggle="pill" href="#renter" role="tab" aria-controls="renter" aria-selected="false">My bookings</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" id="info-tab" data-toggle="pill" href="#info" role="tab" aria-controls="info" aria-selected="true">My profile</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" id="renter-tab" data-toggle="pill" href="#renter" role="tab" aria-controls="renter" aria-selected="false">Bookings</a>
+        <a class="nav-link" id="pimp-tab" data-toggle="pill" href="#pimp" role="tab" aria-controls="pimp" aria-selected="false">My portfolio</a>
       </li>
     </ul>
   </div>
@@ -32,14 +32,13 @@
           <p><strong>Address: </strong><%= current_user.address %></p>
           <p><strong>Email: </strong><%= current_user.email %></p>
           <p><strong>Password: </strong> •••••••••</p>
-          <div class="text-right"><a href="#" class="card-link">Edit profile</a></div>
         </div>
       </div>
     </div>
   </div>
 
   <!-- Tab de dashboard de pimp -->
-  <div class="tab-pane fade show active" id="pimp" role="tabpanel" aria-labelledby="pimp-tab">
+  <div class="tab-pane fade" id="pimp" role="tabpanel" aria-labelledby="pimp-tab">
     <div class=" mt-2 p-4">
 
       <!-- Portfolio of friends -->
@@ -133,63 +132,44 @@
       </div>
     </div>
   </div>
+
   <!-- Tab de dashboard de renter -->
-  <div class="tab-pane fade" id="renter" role="tabpanel" aria-labelledby="renter-tab">
-    <h3>My past bookings</h3>
-    <div class="border border-dark p-4 w-100 border-bottom-0 border-left-0 border-right-0">
-      <br>
-      <div class="cards-small">
-        <% current_user.friends.each do |friend| %>
-        <div class="card-wrapper">
-          <%= link_to friend_path(friend) do %>
-            <div class="card-trip card-small">
-              <%= cl_image_tag friend.photo.key, gravity: :face if friend.photo.attached? %>
-              <div class="card-trip-infos">
-                <div>
-                  <h2><%= friend.name %></h2>
-                </div>
-                <p><%= friend.price.round %> € / day</p>
-              </div>
-            </div>
-          <% end %>
-        </div>
-        <% end %>
-      </div>
-    </div>
-    <br>
+  <div class="tab-pane fade show active" id="renter" role="tabpanel" aria-labelledby="renter-tab">
     <!-- My next bookings -->
     <h3>My next bookings</h3>
     <div class="border border-dark p-4 w-100 border-bottom-0 border-left-0 border-right-0">
       <br>
-      <div class="cards-small">
-        <% current_user.friends.each do |friend| %>
-        <div class="card-wrapper">
-          <%= link_to friend_path(friend) do %>
-            <div class="card-trip card-small">
-              <%= cl_image_tag friend.photo.key, gravity: :face if friend.photo.attached? %>
-              <div class="card-trip-infos">
-                <div>
-                  <h2><%= friend.name %></h2>
-                </div>
-                <p><%= friend.price.round %> € / day</p>
+        <% @upcoming_bookings.each do |booking| %>
+          <div class="card-booking">
+              <%= cl_image_tag booking.friend.photo.key, crop: :fill, gravity: :face if booking.friend.photo.attached? %>
+              <div class="card-booking-infos">
+                <h2><%= booking.friend.name %></h2>
+                <p>Booked from <%= booking.display_start_date %> to <%= booking.display_end_date %> </p>
+                <p>Total cost: <%= (booking.length_in_days*booking.friend.price).round %> € </p>
+                <p>Your rating: <% 3.times {%><i class="fa fa-star"></i><% } %></p>
               </div>
-            </div>
-          <% end %>
-          <div class="card-tools">
-            <a href="www.google.com"><div class="btn btn-light card-delete">Edit</div></a>
-            <a href="www.google.com"><div class="btn btn-light card-delete">Delete</div></a>
           </div>
-        </div>
         <% end %>
-      </div>
-      <div class="mt-3">
-        <% if policy(Friend).create? %>
-          <%= link_to 'New friend', new_friend_path, class: "btn btn-secondary text-white mb-2" %>
-        <% end %>
-      </div>
+      <br>
     </div>
-    <br>
-  </div>
+
+    <!-- My past bookings -->
+    <h3>My past bookings</h3>
+     <div class="border border-dark p-4 w-100 border-bottom-0 border-left-0 border-right-0">
+      <br>
+        <% @passed_bookings.each do |booking| %>
+          <div class="card-booking">
+              <%= cl_image_tag booking.friend.photo.key, crop: :fill, gravity: :face if booking.friend.photo.attached? %>
+              <div class="card-booking-infos">
+                <h2><%= booking.friend.name %></h2>
+                <p>Booked from <%= booking.display_start_date %> to <%= booking.display_end_date %> </p>
+                <p>Total cost: <%= (booking.length_in_days*booking.friend.price).round %> € </p>
+                <p>Your rating: <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> </p>
+              </div>
+          </div>
+        <% end %>
+      <br>
+    </div>
 </div>
 
 
