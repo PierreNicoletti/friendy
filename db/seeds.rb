@@ -18,12 +18,12 @@ lionel = User.create!(email: "lionel@friendy.com", password: "password", first_n
 laetitia = User.create!(email: "laetitia@friendy.com", password: "password", first_name: "Laetitia", last_name: "D", address: "Paris")
 
 puts 'Creating friends...'
-julie = Friend.create!(user: laura, name: "Julie", birth_date: "01/05/1999", gender: "female", address: "Paris", description: "Very friendly person hanger to meet new people. Lorem ipsum dolor sit amet, consectetur adipisicing elit.", price: 320)
-david = Friend.create!(user: laura, name: "David", birth_date: "01/02/1987", gender: "male", address: "Los Angeles", description: "Ready to rock your world. Lorem ipsum dolor sit amet, consectetur adipisicing elit.", price: 220)
-tina = Friend.create!(user: laura, name: "Tina", birth_date: "01/05/1989", gender: "female", address: "London", description: "Very smily person indeed. Lorem ipsum dolor sit amet, consectetur adipisicing elit.", price: 290)
-bob = Friend.create!(user: lionel, name: "Bob", birth_date: "01/05/1962", gender: "male", address: "Phoenix (AZ)", description: "I might look scary but I'm very nice, trust me. Lorem ipsum dolor sit amet, consectetur adipisicing elit.", price: 80)
-lisa = Friend.create!(user: lionel, name: "Lisa", birth_date: "01/05/1980", gender: "female", address: "Nantes", description: "Salut, moi c'est Lisa ! J'aime dessiner, sortir avec mes amis, et regarder des séries. Lorem ipsum dolor sit amet, consectetur adipisicing elit.", price: 100)
-jenny = Friend.create!(user: lionel, name: "Jenny", birth_date: "01/05/1990", gender: "male", address: "Paris", description: "Je sais faire la roue et les crêpes au sucre. Lorem ipsum dolor sit amet, consectetur adipisicing elit.", price: 75)
+julie = Friend.create!(user: laura, name: "Julie", birth_date: "01/05/1999", gender: "female", address: "Avenue Denfert-Rochereau, Paris 14e Arrondissement, Île-de-France, France", description: "Very happy person hanger to meet new people. I like good beers and hanging out with my dog", price: 320)
+david = Friend.create!(user: laetitia, name: "David", birth_date: "01/02/1987", gender: "male", address: "Los Angeles (CA)", description: "Happy guy, ready to rock your world. I like burgers and soccer.", price: 220)
+tina = Friend.create!(user: laetitia, name: "Tina", birth_date: "01/05/1989", gender: "female", address: "10 Rue Saint-Merri, Paris 4e Arrondissement, Île-de-France, France", description: "Very smily person indeed, living life to the fullest.", price: 290)
+bob = Friend.create!(user: pierre, name: "Bob", birth_date: "01/05/1962", gender: "male", address: "Phoenix (AZ)", description: "I might look scary but I'm very nice, trust me. I am looking for someone equally happy as I am.", price: 80)
+lisa = Friend.create!(user: laetitia, name: "Lisa", birth_date: "01/05/1980", gender: "female", address: "Nantes", description: "Salut, moi c'est Lisa ! J'aime dessiner, sortir avec mes amis, et regarder des séries. Lorem ipsum dolor sit amet, consectetur adipisicing elit.", price: 100)
+jenny = Friend.create!(user: pierre, name: "Jenny", birth_date: "01/05/1990", gender: "male", address: "Mairie du 20e arrondissement, Paris, Île-de-France, France", description: "Je sais faire la roue et les crêpes au sucre. Lorem ipsum dolor sit amet, consectetur adipisicing elit.", price: 75)
 
 puts 'Linking with photos...'
 julie_pic = URI.open("https://images.unsplash.com/photo-1485218173291-62104d18e1c1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80")
@@ -61,7 +61,7 @@ lionel.save!
 laetitia.save!
 
 puts 'Creating bookings...'
-Booking.create!(friend: julie, user: pierre, start_date: "15/11/2019", end_date: "16/11/2019")
-Booking.create!(friend: tina, user: pierre, start_date: "15/12/2019", end_date: "16/12/2019")
-Booking.create!(friend: tina, user: pierre, start_date: "15/01/2019", end_date: "19/01/2019")
-Booking.create!(friend: lisa, user: pierre, start_date: "15/03/2019", end_date: "19/03/2019")
+Booking.create!(friend: julie, user: laetitia, start_date: "26/12/2019", end_date: "28/12/2019")
+Booking.create!(friend: tina, user: lionel, start_date: "15/12/2019", end_date: "16/12/2019")
+Booking.create!(friend: bob, user: laetitia, start_date: "15/01/2019", end_date: "19/01/2019")
+Booking.create!(friend: david, user: laura, start_date: "15/03/2019", end_date: "19/03/2019")
