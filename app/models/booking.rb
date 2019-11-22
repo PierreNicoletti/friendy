@@ -22,14 +22,6 @@ class Booking < ApplicationRecord
     return end_date < Date.today
   end
 
-  def passed_bookings
-    return current_user.bookings.select{|booking| booking.passed?}
-  end
-
-  def upcoming_bookings
-    return current_user.bookings.reject{|booking| booking.passed?}
-  end
-
   private
 
   def explicit_month(month)
