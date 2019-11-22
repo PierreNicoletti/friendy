@@ -18,6 +18,14 @@ class BookingsController < ApplicationController
     end
   end
 
+  def passed_bookings
+    return current_user.bookings.select(booking.passed?)
+  end
+
+  def passed_bookings
+    return current_user.bookings.reject(booking.passed?)
+  end
+
   private
 
   def booking_params
