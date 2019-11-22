@@ -46,8 +46,11 @@
   }
 }
 
-.card-wrapper-2 {
+.card-wrapper-index {
   position: relative;
+  &:hover {
+    transform: scale(1.05);
+  }
 }
 
 .card-owner {
