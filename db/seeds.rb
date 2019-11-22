@@ -62,6 +62,6 @@ laetitia.save!
 
 puts 'Creating bookings...'
 Booking.create!(friend: julie, user: laetitia, start_date: "26/12/2019", end_date: "28/12/2019")
-Booking.create!(friend: tina, user: laetitia, start_date: "15/12/2019", end_date: "16/12/2019")
-Booking.create!(friend: david, user: laetitia, start_date: "15/01/2019", end_date: "19/01/2019")
-Booking.create!(friend: lisa, user: laetitia, start_date: "15/03/2019", end_date: "19/03/2019")
+Booking.create!(friend: tina, user: lionel, start_date: "15/12/2019", end_date: "16/12/2019")
+Booking.create!(friend: bob, user: laetitia, start_date: "15/01/2019", end_date: "19/01/2019")
+Booking.create!(friend: david, user: laura, start_date: "15/03/2019", end_date: "19/03/2019")
