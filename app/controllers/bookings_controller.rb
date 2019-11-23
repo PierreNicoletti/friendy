@@ -1,11 +1,4 @@
 class BookingsController < ApplicationController
-
-  # def new
-  #   @booking = Booking.new
-  #   @friend = Friend.find(params[:friend_id])
-  #   authorize @booking
-  # end
-
   def create
     @booking = current_user.bookings.new(booking_params)
     @friend = Friend.find(params[:friend_id])
@@ -14,7 +7,24 @@ class BookingsController < ApplicationController
     if @booking.save
       redirect_to dashboard_path #define path
     else
-      render :'friends/show'
+      render 'friends/show'
+    end
+  end
+
+  def update
+    @booking = Booking.find(params[:id])
+    @booking.update(booking_params)
+    authorize @booking
+    if @booking.save
+      respond_to do |format|
+        format.html { redirect_to dashboard_path }
+        format.js # <-- will render `app/views/bookings/update.js.erb`
+      end
+    else
+      respond_to do |format|
+        format.html { render '/dashboard' }
+        format.js # <-- idem
+      end
     end
   end
 
@@ -28,6 +38,6 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:start_date, :end_date, :user, :friend)
+    params.require(:booking).permit(:start_date, :end_date, :user, :friend, :rating, :comment)
   end
 end

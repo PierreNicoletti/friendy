@@ -181,6 +181,18 @@
                       <p>Total cost: <%= (booking.length_in_days*booking.friend.price).round %> € </p>
                     </div>
                 </div>
+                    <#% if booking.rating.nil? %>
+                      <%= simple_form_for(booking, remote: true) do |f| %>
+                        <%= f.input :rating, as: :radio_buttons, collection: [1,2,3,4,5] %>
+                        <%= f.input :comment, placeholder: "Comment" %>
+                        <%= f.submit 'Review', class: 'btn btn-dark w-100 mb-5 mt-2' %>
+                      <% end %>
+                    <#% else %>
+                    <div id="ajax-review">
+                      <p>Rating: <%= '⭐'* (booking.rating) %></p>
+                      <p>Comment: <%= booking.comment %></p>
+                    </div>
+                    <#% end %>
               <% end %>
             <br>
           </div>

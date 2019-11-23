@@ -13,6 +13,10 @@ class BookingPolicy < ApplicationPolicy
     return true # anyone can create a booking
   end
 
+  def update?
+    return true # anyone can update a booking
+  end
+
   def destroy?
     return true # anyone can create a booking
   end

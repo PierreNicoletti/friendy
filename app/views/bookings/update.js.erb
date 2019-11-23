@@ -1,0 +1,6 @@
+function refreshReview(innerHTML) {
+  const divReview = document.getElementById('ajax-review');
+  divReview.innerHTML = innerHTML;
+}
+
+refreshReview('<%= j render "bookings/review", booking: @booking %>');
