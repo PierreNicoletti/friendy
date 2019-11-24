@@ -183,7 +183,16 @@
                 </div>
                     <#% if booking.rating.nil? %>
                       <%= simple_form_for(booking, remote: true) do |f| %>
-                        <%= f.input :rating, as: :radio_buttons, collection: [1,2,3,4,5] %>
+                        <#%= f.input :rating, collection: [1,2,3,4,5] %>
+                        <input type="number" name="booking[rating]" id="booking-rating" min="1" max="5" />
+    <div class="rating" role="optgroup">
+      <!-- in Rails just use 1.upto(5) -->
+      <i class="fa fa-star-o fa-2x rating-star" id="rating-1" data-rating="1" tabindex="0" aria-label="Rate as one out of 5 stars" role="radio"></i>
+      <i class="fa fa-star-o fa-2x rating-star" id="rating-2" data-rating="2" tabindex="0" aria-label="Rate as two out of 5 stars" role="radio"></i>
+      <i class="fa fa-star-o fa-2x rating-star" id="rating-3" data-rating="3" tabindex="0" aria-label="Rate as three out of 5 stars" role="radio"></i>
+      <i class="fa fa-star-o fa-2x rating-star" id="rating-4" data-rating="4" tabindex="0" aria-label="Rate as four out of 5 stars" role="radio"></i>
+      <i class="fa fa-star-o fa-2x rating-star" id="rating-5" data-rating="5" tabindex="0" aria-label="Rate as five out of 5 stars" role="radio"></i>
+    </div>
                         <%= f.input :comment, placeholder: "Comment" %>
                         <%= f.submit 'Review', class: 'btn btn-dark w-100 mb-5 mt-2' %>
                       <% end %>
